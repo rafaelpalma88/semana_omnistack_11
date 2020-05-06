@@ -1,5 +1,5 @@
 const connection = require('../database/connection')
-const crypto = require('crypto')
+const generateUniqueId = require('../utils/generateUniqueId')
 
 module.exports = {
 
@@ -13,7 +13,7 @@ module.exports = {
 
         const { name, email, whatsapp, city, uf } = request.body;
 
-        const id = crypto.randomBytes(4).toString('HEX')
+        const id = generateUniqueId()
     
         //console.log(data)
         
@@ -25,6 +25,8 @@ module.exports = {
             city,
             uf
         })
+
+        return response.json({ id })
     }
 
    

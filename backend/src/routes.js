@@ -11,14 +11,17 @@ routes.post('/sessions', SessionController.create)
 
 routes.get('/ongs', OngController.index)
 
-routes.post('/ongs', celebrate({
+/*routes.post('/ongs', celebrate({
     [Segments.BODY]: Joi.object().keys({
         name: Joi.string().required(),
         email: Joi.string().required().email(),
-        whatsapp: Joi.number().required().min(10).max(11),
-        city: Joi.string().required().length(2)
+        whatsapp: Joi.string().required().min(10).max(11),
+        city: Joi.string().required(),
+        uf: Joi.string().required().length(2)
     })
-}) , OngController.create)
+}) , OngController.create)*/
+
+routes.post('/ongs', OngController.create)
 
 routes.get('/incidents', celebrate({
     [Segments.QUERY]: Joi.object().keys({
